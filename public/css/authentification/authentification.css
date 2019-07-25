@@ -1,0 +1,122 @@
+body, html {
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+}
+
+.parent {
+    display: flex;
+    min-height: 100vh;
+}
+
+.zone_left {
+    background-image: url("../../img/authentification.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    width: 50%;
+}
+
+.zone_right{
+    min-height: 100%;
+    width: 50%;
+    position: relative;
+}
+
+.container {
+    width: calc(100% - 60px);
+    height: min-content;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto 0 auto 30px;
+    animation: bodytrans 0.75s
+}
+
+.container .title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Montserrat-Regular;
+}
+
+.container .input_div {
+    margin: 20px;
+    border: 1px solid #99A0A8;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.input_div .label {
+    font-size: 14px;
+    color: #99A0A8;
+    font-family: Montserrat-Medium;
+}
+
+.input_div input {
+    background-color: transparent;
+    border: 0px solid;
+    height: 30px;
+    border-radius: 2px;
+    width: 100%;
+    font-size: 14px;
+    font-family: Montserrat-Medium;
+}
+
+.input_div input:focus {
+    outline: none;
+}
+
+.container .submit {
+    height: 45px;
+    width: calc(100% - 40px);
+    margin: 0 20px 0 20px;
+    border: 0px solid;
+    border-radius: 6px;
+    color: #FFFFFF;
+    background-color: #85abe2;
+    font-size: 16px;
+    font-family: Montserrat-Medium;
+    cursor: pointer;
+}
+
+.container .inscription a{
+    font-size: 14px;
+    font-family: Montserrat-Medium;
+    color: #99A0A8;
+    text-decoration: none;
+    margin-top: 16px;
+    display: block;
+    margin-left: 20px;
+}
+
+.error {
+    display: none;
+    color: red;
+    font-size: 12px;
+    font-family: Montserrat-Medium;
+}
+
+.error_form {
+    color: red;
+    font-size: 12px;
+    font-family: Montserrat-Medium;
+}
+
+@keyframes bodytrans {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+
+
+
+

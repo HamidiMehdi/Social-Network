@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} - ArengiBook</title>
+    <link href="{{ asset('css/font/font.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/authentification/authentification.css') }}" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="parent">
+    <div class="zone_right">{% block body %}{% endblock %}</div>
+    <div class="zone_left"></div>
+</div>
+
+<script type="text/javascript" src="{{ asset('js/jquery/jquery-3.4.1.js') }}"></script>
+{% block javascripts %}{% endblock %}
+
+</body>
+</html>

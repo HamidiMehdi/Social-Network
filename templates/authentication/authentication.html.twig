@@ -1,0 +1,37 @@
+{% extends "base_authentification.html.twig" %}
+
+{% block title %}Connexion{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/authentification/authentification.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="title">Authentification - ArengiBook</div>
+
+        <div class="error_form">
+            {{ form_errors(form) }}
+        </div>
+
+        {{ form_start(form) }}
+        <div class="input_div">
+            <div class="label">Nom d'utilisateur *</div>
+            {{ form_widget(form.username) }}
+            <div class="error" id="error_username">Le champs username ne peut être vide.</div>
+        </div>
+        <div class="input_div">
+            <div class="label">Mot de passe *</div>
+            {{ form_widget(form.password) }}
+            <div class="error" id="error_password">Le champs mot de passe ne peut être vide.</div>
+        </div>
+        {{ form_widget(form.submit, {'attr': {'class': 'submit'}, 'label': 'Connexion'}) }}
+        {{ form_end(form) }}
+
+        <div class="inscription">
+             <a href="{{ path('inscription') }}">Inscrivez-vous !</a>
+        </div>
+
+    </div>
+{% endblock %}
+
