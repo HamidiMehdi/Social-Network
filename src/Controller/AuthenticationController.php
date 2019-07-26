@@ -46,7 +46,6 @@ class AuthenticationController extends Controller
         ]);
     }
 
-
     /**
      * @Route("/inscription", name="inscription")
      *
@@ -62,7 +61,6 @@ class AuthenticationController extends Controller
 
         if ($form->isValid() && $form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
-
 
             $em->persist($user);
             $em->flush();

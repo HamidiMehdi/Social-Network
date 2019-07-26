@@ -1,9 +1,16 @@
 {% extends "base_authentification.html.twig" %}
 
 {% block title %}Inscription{% endblock %}
+{% block css %}
+    <link href="{{ asset('plugin/foopicker.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/authentification/inscription.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('plugin/foopicker.js') }}"></script>
+{% endblock %}
+
 {% block body %}
     <div class="container">
-
         <div class="title">Inscription - ArengiBook</div>
 
         <div class="error_form">
@@ -14,17 +21,20 @@
         <div class="input_div">
             <div class="label">Nom *</div>
             {{ form_widget(form.first_name) }}
-            <div class="error" id="error_username">Le champs username ne peut être vide.</div>
+            <div class="error" id="error_first_name">Le champs nom ne peut être vide.</div>
         </div>
         <div class="input_div">
             <div class="label">Prenom *</div>
             {{ form_widget(form.last_name) }}
-            <div class="error" id="error_password">Le champs mot de passe ne peut être vide.</div>
+            <div class="error" id="error_last_name">Le champs prenom ne peut être vide.</div>
         </div>
         <div class="input_div">
             <div class="label">Nom d'utilisateur *</div>
             {{ form_widget(form.username) }}
-            <div class="error" id="error_password">Le champs mot de passe ne peut être vide.</div>
+            {% for error in form.username.vars['errors'] %}
+                <div style="display: block;" class="error">Ce nom d'utilisateur exist déjà</div>
+            {% endfor %}
+            <div class="error" id="error_username">Le champs nom d'utilisateur ne peut être vide.</div>
         </div>
         <div class="input_div">
             <div class="label">Mot de passe *</div>
@@ -34,20 +44,22 @@
         <div class="input_div">
             <div class="label">Email *</div>
             {{ form_widget(form.email) }}
-            <div class="error" id="error_password">Le champs mot de passe ne peut être vide.</div>
+            {% for error in form.email.vars['errors'] %}
+                <div style="display: block;" class="error">Cet email exist déjà</div>
+            {% endfor %}
+            <div class="error" id="error_email">Le champs email ne peut être vide.</div>
         </div>
         <div class="input_div">
             <div class="label">Date de naissance *</div>
             {{ form_widget(form.birthday) }}
-            <div class="error" id="error_password">Le champs mot de passe ne peut être vide.</div>
+            <div class="error" id="error_birthday">Le champs date de naisssance ne peut être vide.</div>
         </div>
+
         {{ form_widget(form.submit, {'attr': {'class': 'submit'}, 'label': 'Connexion'}) }}
-        {{ form_end(form) }}
 
         <div class="inscription">
-            <a href="{{ path('inscription') }}">Inscrivez-vous !</a>
+            <a href="{{ path('authentication') }}">Retour connexion</a>
         </div>
-
-
+        {{ form_end(form) }}
     </div>
 {% endblock %}
