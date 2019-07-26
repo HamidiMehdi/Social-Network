@@ -51,7 +51,7 @@
         </div>
         <div class="input_div">
             <div class="label">Date de naissance *</div>
-            {{ form_widget(form.birthday) }}
+            {{ form_widget(form.birthday, { 'attr': {'autocomplete': 'off'} }) }}
             <div class="error" id="error_birthday">Le champs date de naisssance ne peut être vide.</div>
         </div>
 

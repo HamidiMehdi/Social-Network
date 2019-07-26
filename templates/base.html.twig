@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} - ArengiBook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{{ asset('css/menu/menu.css') }}" rel="stylesheet"/>
+    {% block css %}{% endblock %}
+</head>
+<body>
+<div class="container">
+    <div class="block_menu">
+        <ul class="menu">
+            <li class="{% block fil_actualite %}{% endblock %}">
+                <a href="{{ path('actualite') }}">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+
+            <li class="{% block profil %}{% endblock %}">
+                <a href="{{ path('actualite') }}">
+                    <i class="fa fa-user"></i>
+                </a>
+            </li>
+
+            <li class="{% block add_post %}{% endblock %}">
+                <a href="{{ path('actualite') }}">
+                    <i class="fa fa-plus"></i>
+                </a>
+            </li>
+
+            <li class="{% block add_friend %}{% endblock %}">
+                <a href="{{ path('actualite') }}">
+                    <i class="fa fa-user-plus"></i>
+                </a>
+            </li>
+        </ul>
+
+        <a class="logout" href="{{ path('logout') }}">
+            <i class="fa fa-outdent"></i>
+        </a>
+    </div>
+    <div id="block_body">{% block body %}{% endblock %}</div>
+</div>
+<script type="text/javascript" src="{{ asset('js/jquery/jquery-3.4.1.js') }}"></script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

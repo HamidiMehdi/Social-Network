@@ -36,6 +36,7 @@ class AuthenticationController extends Controller
             );
 
             if ($user !== null) {
+                $request->getSession()->set('user', $user);
                 return $this->redirectToRoute('actualite');
             }
             $form->addError(new FormError("Nom d'utilisateur ou mot de passe incorrect"));
@@ -61,15 +62,28 @@ class AuthenticationController extends Controller
 
         if ($form->isValid() && $form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
-
+            $user->setPassword(hash('sha512', $user->getPassword()));
             $em->persist($user);
             $em->flush();
+            $request->getSession()->set('user', $user);
             return $this->redirectToRoute('actualite');
         }
 
         return $this->render('authentication/inscription.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/logout", name="logout")
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function logout(Request $request)
+    {
+        $request->getSession()->clear();
+        return $this->redirectToRoute('authentication');
     }
 
     private function getFormAuthentification()
